@@ -1,5 +1,12 @@
 const routes = [
     {
+        method: 'GET',
+        path: '/',
+        handler: (request, h) => {
+            return 'Homepage';
+        },
+    },
+    {
         method: '*',
         path: '/',
         handler: (request, h) => {
@@ -8,9 +15,31 @@ const routes = [
     },
     {
         method: 'GET',
-        path: '/',
+        path: '/about',
         handler: (request, h) => {
-            return 'Homepage';
+            return 'About page';
+        },
+    },
+    {
+        method: '*',
+        path: '/about',
+        handler: (request, h) => {
+            return 'Halaman tidak dapat diakses dengan method';
+        },
+    },
+    {
+        method: 'GET',
+        path: '/hello/{name?}',
+        handler: (request, h) => {
+            const {name = 'stranger'} = request.params;
+            return `halo, ${name}`;
+        }
+    },
+    {
+        method: '*',
+        path: '/{any*}',
+        handler: (request, h) => {
+            return 'Halaman tidak ditemukan';
         },
     },
 ];
