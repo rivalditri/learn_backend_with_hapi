@@ -1,5 +1,6 @@
 // import package hapi
 const hapi = require('@hapi/hapi');
+const routes = require('./routes');
 
 //membuat server menggunakan hapi dengan fungsi init
 const init = async () => {
@@ -8,6 +9,9 @@ const init = async () => {
         port : 5000,
         host : 'localhost',
     });
+
+    //create route server with hapi
+    server.route(routes)
 
     //server start
     await server.start();
